@@ -1,17 +1,26 @@
-let money; 
+let money = 100000; 
 
-let income;
+let income = 'фриланс';
 
-let addExpenses;
+let addExpenses = 'Интернет, Такси, Коммуналка';
 
-let deposit;
+let deposit = true;
 
-let mission;
+let mission = 10000000;
 
-let period;
+let period = 6;
 
 
+console.log(typeof(money));
+console.log(typeof(income));
+console.log(typeof(deposit));
 
-alert('Врываемся в JS');
+console.log(addExpenses.length);
 
-console.log('Браузер не пугайся, свои!');
+console.log('Период равен ' + period + ' месяцев');
+console.log('Цель заработать ' + mission + ' рублей');
+
+console.log(addExpenses.toLowerCase().split());
+
+let budgetDay = money / 30;
+console.log(budgetDay);
