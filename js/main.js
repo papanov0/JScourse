@@ -22,9 +22,9 @@ let mission = 10000000;
 let period = 6;
 
 
-console.log(typeof(money));
-console.log(typeof(income));
-console.log(typeof(deposit));
+console.log(typeof money);
+console.log(typeof income);
+console.log(typeof deposit);
 
 console.log(addExpenses.length);
 
