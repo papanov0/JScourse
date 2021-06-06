@@ -38,7 +38,14 @@ console.log('бюджет на день: ' + budgetDay);
 
 console.log('бюджет на месяц: ' + budgetMonth);
 
-console.log(Math.ceil(mission / budgetMonth) + ' месяцев');
+
+if (mission / budgetMonth === Infinity) {
+    console.log('Братан, менять тебе че-то надо в этой жизни, так не достигнешь цели!');
+} 
+else {
+    console.log(Math.ceil(mission / budgetMonth) + ' месяцев');
+};
+
 
 
 if (budgetDay  >= 1200) {
@@ -52,4 +59,4 @@ else if (budgetDay < 600 && budgetDay >= 0) {
 }
 else {
     console.log('Что то пошло не так');
-}
+};
