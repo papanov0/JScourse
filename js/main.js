@@ -14,9 +14,6 @@ let amount1 = prompt('Во сколько это обойдется?', '10000');
 
 let amount2 = prompt('Во сколько это обойдется?', '15000');
 
-let budgetMonth = money - amount1 - amount2;
-
-
 let mission = 10000000;
 
 let period = 6;
@@ -26,6 +23,14 @@ console.log(typeof money);
 console.log(typeof income);
 console.log(typeof deposit);
 
+// 1 задание
+const getExpensesMonth = function(amount1, amount2) {
+    return Number(amount1) + Number(amount2);
+};
+
+let sumExpenses = getExpensesMonth(amount1, amount2);
+console.log('все расходы составляют: ' + sumExpenses);
+
 console.log(addExpenses.length);
 
 console.log('Период равен ' + period + ' месяцев');
@@ -33,17 +38,31 @@ console.log('Цель заработать ' + mission + ' рублей');
 
 console.log(addExpenses.toLowerCase().split());
 
-let budgetDay = Math.floor(budgetMonth / 30);
+// 4 задание
+const getTargetMonth = function(accumulatedMonth, mission){
+    return mission / accumulatedMonth;
+}
+
+// 2 задание
+const getAccumulatedMonth = function(money, sumExpenses) {
+    return Number(money) - Number(sumExpenses);
+};
+
+// 3 задание
+let accumulatedMonth = getAccumulatedMonth(money, sumExpenses);
+
+let TargetMonth = getTargetMonth(accumulatedMonth, mission);
+console.log('Cрок достижения цели в месяцах: ' + TargetMonth);
+
+let budgetDay = Math.floor(accumulatedMonth / 30);
 console.log('бюджет на день: ' + budgetDay);
 
-console.log('бюджет на месяц: ' + budgetMonth);
 
-
-if (mission / budgetMonth === Infinity) {
+if (mission / accumulatedMonth === Infinity) {
     console.log('Братан, менять тебе че-то надо в этой жизни, так не достигнешь цели!');
 } 
 else {
-    console.log(Math.ceil(mission / budgetMonth) + ' месяцев');
+    console.log(Math.ceil(mission / accumulatedMonth) + ' месяцев');
 };
 
 
@@ -60,3 +79,10 @@ else if (budgetDay < 600 && budgetDay >= 0) {
 else {
     console.log('Что то пошло не так');
 };
+
+
+
+
+
+
+
