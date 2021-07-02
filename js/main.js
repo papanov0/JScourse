@@ -96,6 +96,17 @@ else {
 
 
 
+    do {
+        console.log('Наша программа включает в себя данные: ')
+    }
+    while (i = 5 < 3) 
+    for (var key in appData) {
+    console.log( "Свойство: " + key + ", значение: " + appData[key] );
+  };
+
+
+
+
 
 
 
