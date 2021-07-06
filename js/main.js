@@ -3,6 +3,11 @@ let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 } 
 
+let notNumber = function(n) {
+    return isNaN(n) && !isFinite(n);
+};
+
+
 let money;
 
 let start = function () {   
@@ -22,16 +27,47 @@ let appData = {
     addIncome: [],
     addExpenses: [],
     deposit: false,
+    persrntDeposit: 0,
+    moneyDeposit: 0,
     mission: 50000,
     budgetMonth: 0,
     expensesMonth: 0,
     
     asking: function() {
-        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'газ, свет');
-        appData.addExpenses = addExpenses.toLowerCase().split();
-        appData.deposit = confirm('Есть ли у вас депозит в банке?', 'false');
+        let cashIncome
+        let itemIncome
+        if(confirm('Есть ли у вас дополнительный заработок?')) {
+
+            do {
+                itemIncome = prompt('Какой у вас дополнительный заработок?' , 'таксую');
+                
+            } 
+            while (!notNumber(itemIncome)) 
+            
+
+            
+            do {
+                cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 10000);
+                
+            } 
+            while (!isNumber(cashIncome)) 
+
+            appData.income[itemIncome] = cashIncome;
+        }
+
+
+
+
+        let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'газ свет');
+        appData.addExpenses = addExpenses.toLowerCase().split(" ");
+        appData.deposit = confirm('Есть ли у вас депозит в банке?');
         for (let i = 0; i<2; i++) {
-            appData.expens[i] = prompt('Введите обязательную статью расходов?', 'газ');
+            do {
+                appData.expens[i] = prompt('Введите обязательную статью расходов?', 'газ');
+                
+            } 
+            while (!notNumber(appData.expens[i]));
+            
                 do {
                     appData.sum[i] = prompt('Во сколько это обойдется?');
                     
@@ -63,10 +99,37 @@ let appData = {
     budgetDay: function() {
         return Math.floor(appData.getBudget() / 30);
     },
+    getInfoDeposit: function(){
+        if(appData.deposit){
+            do {
+                appData.persrntDeposit = prompt('Какой годовой процент?', '10');
+                
+            } 
+            while (!isNumber(appData.persrntDeposit));
+
+            do {
+                appData.moneyDeposit = prompt('Какая сумма заложена?', '10000');
+                
+            } 
+            while (!isNumber(appData.moneyDeposit));
+            
+            
+        }
+    },
+    calcSavedMoney: function(){
+        appData.budgetMonth * appData.period;
+    }
 
 };
 
 appData.asking();
+
+function ucFirst(str) {
+    if (!str) return str;
+  
+    return str[0].toUpperCase() + str.slice(1);
+  }
+  
 
 console.log('все расходы составляют: ' + Number(appData.expensesMonth));
 
@@ -93,7 +156,21 @@ else if (appData.budgetDay() < 600 && appData.budgetDay() >= 0) {
 else {
     console.log('Что то пошло не так');
 };
+let i
 
+
+let appStore = {};
+
+for (i = 0; i< appData.addExpenses.length; i++  ) {
+    appStore[i] = ucFirst(appData.addExpenses[i])
+    
+};
+
+let s = "";
+for( i = 0; i< appData.addExpenses.length; i += 1) {
+  s += appStore[i] + ", ";
+}
+console.log(s);
 
 
     do {
@@ -103,6 +180,8 @@ else {
     for (var key in appData) {
     console.log( "Свойство: " + key + ", значение: " + appData[key] );
   };
+
+  
 
 
 
