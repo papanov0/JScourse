@@ -78,7 +78,7 @@ let appData = {
         };
         for (let prop in appData.expenses) {
             appData.expensesMonth += appData.expenses[prop];
-          }
+        }
         
 
     },
@@ -126,10 +126,9 @@ appData.asking();
 
 function ucFirst(str) {
     if (!str) return str;
-  
+
     return str[0].toUpperCase() + str.slice(1);
-  }
-  
+}
 
 console.log('все расходы составляют: ' + Number(appData.expensesMonth));
 
@@ -168,7 +167,7 @@ for (i = 0; i< appData.addExpenses.length; i++  ) {
 
 let s = "";
 for( i = 0; i< appData.addExpenses.length; i += 1) {
-  s += appStore[i] + ", ";
+    s += appStore[i] + ", ";
 }
 console.log(s);
 
@@ -179,9 +178,9 @@ console.log(s);
     while (i = 5 < 3) 
     for (var key in appData) {
     console.log( "Свойство: " + key + ", значение: " + appData[key] );
-  };
+    };
 
-  
+
 
 
 
